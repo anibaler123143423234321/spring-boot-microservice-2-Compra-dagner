@@ -45,16 +45,8 @@ public class Compra {
     @Column(name = "codigo", nullable = false, unique = true, length = 8)
     private String codigo;
 
-    @Column(name = "cargo_delivery_aplicado", nullable = false)
-    private boolean cargoDeliveryAplicado;
-
-    @Column(name = "ultima_vez_delivery", nullable = true)
-    private LocalDateTime ultimaVezDelivery;
-
-    @Column(name = "cargo_delivery", nullable = false)
+    @Column(name = "cargo_delivery", nullable = true)
     private Double cargoDelivery = 2.0; // Valor predeterminado de 2.0 soles
-
-
 
     public Compra() {
         this.codigo = generarCodigo();
