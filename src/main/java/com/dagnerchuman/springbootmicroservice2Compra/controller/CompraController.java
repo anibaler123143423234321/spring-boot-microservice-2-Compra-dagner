@@ -15,8 +15,18 @@ public class CompraController {
     private CompraService compraService;
 
     @PostMapping
-    public ResponseEntity<?> saveCompra(@RequestBody Compra compra)
-    {
+    public ResponseEntity<?> saveCompra(@RequestBody Compra compra) {
+        // Calcula el total multiplicando precio por cantidad
+        double total = compra.getPrecioCompra() * compra.getCantidad();
+
+        // Verifica si el tipo de envío es igual a "Delivery"
+        if ("Delivery".equals(compra.getTipoEnvio())) {
+            // Si es "Delivery", suma +2 al precio de compra
+            total += 2.0;
+        }
+
+        compra.setPrecioCompra(total);
+
         Compra nuevaCompra = compraService.saveCompra(compra);
         return ResponseEntity.ok(nuevaCompra);
     }
