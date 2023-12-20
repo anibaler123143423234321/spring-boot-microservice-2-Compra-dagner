@@ -17,10 +17,6 @@ public class CompraController {
     @PostMapping
     public ResponseEntity<?> saveCompra(@RequestBody Compra compra)
     {
-        // Calcula el total multiplicando precio por cantidad
-        double total = compra.getPrecioCompra() * compra.getCantidad();
-        compra.setPrecioCompra(total);
-
         Compra nuevaCompra = compraService.saveCompra(compra);
         return ResponseEntity.ok(nuevaCompra);
     }

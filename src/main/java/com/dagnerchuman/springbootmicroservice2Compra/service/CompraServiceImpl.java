@@ -48,5 +48,4 @@ public class CompraServiceImpl implements CompraService {
     public List<Compra> findAllCompras() {
         return compraRepository.findAll();
     }
-
 }
